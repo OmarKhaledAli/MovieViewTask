@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MovieTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilD-Sy-bWl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IPy-Qr-WVu">
+                                        <rect key="frame" x="0.0" y="128" width="375" height="539"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="539" id="dxY-tp-CMx"/>
+                                        </constraints>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rd7-4i-vfT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" placeholder="YES" id="KU8-cP-Emj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="IPy-Qr-WVu" firstAttribute="leading" secondItem="ilD-Sy-bWl" secondAttribute="leading" id="9qv-0m-r6N"/>
+                                    <constraint firstAttribute="bottom" secondItem="IPy-Qr-WVu" secondAttribute="bottom" id="A9x-La-j7f"/>
+                                    <constraint firstAttribute="trailing" secondItem="IPy-Qr-WVu" secondAttribute="trailing" id="ZNV-Wl-cAw"/>
+                                    <constraint firstItem="rd7-4i-vfT" firstAttribute="top" secondItem="ilD-Sy-bWl" secondAttribute="top" id="bxu-Ah-7hI"/>
+                                    <constraint firstItem="rd7-4i-vfT" firstAttribute="leading" secondItem="ilD-Sy-bWl" secondAttribute="leading" id="uKC-bt-8gg"/>
+                                    <constraint firstAttribute="trailing" secondItem="rd7-4i-vfT" secondAttribute="trailing" id="wF3-0D-nJV"/>
+                                    <constraint firstItem="IPy-Qr-WVu" firstAttribute="top" secondItem="rd7-4i-vfT" secondAttribute="bottom" id="zAK-72-gO6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ilD-Sy-bWl" secondAttribute="trailing" id="0tA-Jj-Duc"/>
+                            <constraint firstItem="ilD-Sy-bWl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="K6p-5Z-uIj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ilD-Sy-bWl" secondAttribute="bottom" id="SvL-UE-1R3"/>
+                            <constraint firstItem="ilD-Sy-bWl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mRF-UM-Gk3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerView" destination="rd7-4i-vfT" id="v6u-Yd-Au6"/>
+                        <outlet property="movieTableView" destination="IPy-Qr-WVu" id="lrX-8T-rww"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="109.29535232383809"/>
+        </scene>
+    </scenes>
+</document>
