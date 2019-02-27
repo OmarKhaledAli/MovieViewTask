@@ -65,7 +65,8 @@ struct NetworkManager {
     func downloadData<EndPoint: EndPointType>(forEndPoint endPoint: EndPoint, completion: @escaping (_ response: Data?,_ error: String?)->()) {
         
         let router = Router<EndPoint>()
-        router.request(endPoint) { data, response, error in
+        router.request(endPoint) {data, response, error in
+        
             if error != nil {
                 completion(nil, "Please check your network connection.")
             }

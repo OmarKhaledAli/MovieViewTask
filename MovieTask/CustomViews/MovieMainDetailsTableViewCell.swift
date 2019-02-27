@@ -16,6 +16,8 @@ class MovieMainDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
+    private let placeHolderName: String = "moviePlaceHolder"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -24,11 +26,29 @@ class MovieMainDetailsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func populateView(movie: MovieMainDetailsViewModel) {
+    func populateView(movie: MovieMainDetailsViewModel?) {
+        guard let movie = movie else {
+            dummyCell()
+            return
+        }
+        
         overviewLabel.text = movie.overView
         titleLabel.text = movie.title
         yearLabel.text = movie.date
+        overviewLabel.alpha = 1
+        titleLabel.alpha = 1
+        yearLabel.alpha = 1
         posterImageView.downloaded(from: movie.psoterPath)
+    }
+    
+    func dummyCell() {
+        overviewLabel.text = "Omar"
+        titleLabel.text = "Omar"
+        yearLabel.text = "Omar"
+        overviewLabel.alpha = 0
+        titleLabel.alpha = 0
+        yearLabel.alpha = 0
+        posterImageView.image = UIImage(named: placeHolderName)
     }
     
 }

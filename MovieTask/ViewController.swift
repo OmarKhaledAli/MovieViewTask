@@ -43,32 +43,78 @@ class ViewController: UIViewController {
     func setupTableView() {
         movieTableView.delegate = self
         movieTableView.dataSource = self
+        movieTableView.prefetchDataSource = self
         movieTableView.register(UINib(nibName: "MovieMainDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieMainDetailsTableViewCell")
-        
+     
         movieTableView.rowHeight = UITableView.automaticDimension
         movieTableView.estimatedRowHeight = 50
+        
+        
+        movieTableView.decelerationRate = UIScrollView.DecelerationRate.normal;
     }
 
 
 }
 
 extension ViewController: DiscoverMovieDelegate {
+    func dataSourceItem() -> [MovieMainDetailsViewModel]? {
+        return movie
+    }
+    
     func reloadData(withMovie movie: [MovieMainDetailsViewModel]?) {
-        self.movie = movie
+        guard movie != nil else {return}
+        
+        self.movie =  movie
         movieTableView.reloadData()
     }
+    
+    func reloadRowsData(withMovie newMovie: [MovieMainDetailsViewModel]?, atIndex index: [IndexPath],completion: (()->Void)?) {
+        self.movie = self.movie == nil ? [] : self.movie
+        
+        self.movie?.append(contentsOf: newMovie!)
+        movieTableView.reloadRows(at: index, with: .automatic)
+        completion!()
+        
+    }
+    
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: isLoadingCell) {
+           presenter?.fetchDiscoverMovie()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movie?.count ?? 0
+        return  movie == nil ? 0 : 10000
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieMainDetailsTableViewCell", for: indexPath) as! MovieMainDetailsTableViewCell
         
-        cell.populateView(movie: movie![indexPath.row])
+        if isLoadingCell(for: indexPath) {
+            cell.populateView(movie: nil)
+        } else {
+            cell.populateView(movie: movie![indexPath.row])
+        }
         
         return cell
     }
+    
+    private func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        guard  movie != nil else { return true }
+        
+        return indexPath.row >= movie!.count
+    }
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = movieTableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
+    }
+    
+   
+
 }

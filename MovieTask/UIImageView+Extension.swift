@@ -16,7 +16,9 @@ extension UIImageView {
         addLoadingIndector()
         
         let networkManager = NetworkManager()
-        networkManager.downloadData(forEndPoint: ImageDownloader.downloadImage(imagePath: url!), completion: { data, error in
+        networkManager.downloadData(forEndPoint: ImageDownloader.downloadImage(imagePath: url!), completion: {[weak self] data, error in
+            guard let `self` = self else { return }
+            
             if let data = data, error == nil {
                 let image = UIImage(data: data)
                 DispatchQueue.main.async() {
@@ -48,3 +50,23 @@ extension UIImageView {
         }
     }
 }
+
+
+extension UITableView {
+    
+
+    
+    func performUpdate(_ update: ()->Void, completion: (()->Void)?) {
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        
+        // Table View update on row / section
+        beginUpdates()
+        update()
+        endUpdates()
+        
+        CATransaction.commit()
+    }
+}
+

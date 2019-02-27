@@ -9,18 +9,21 @@
 import Foundation
 
 class FetchDiscoverMovieWorker: APIWorker{
+    var presenter: ErrorHandler?
     
     required init(presenter: ErrorHandler) {
-        //TODO: -
+        self.presenter = presenter
     }
     
     func execute(success: @escaping (MovieApiResponse?) -> (), requestModel: Int?) {
         guard requestModel != nil else { return }
         
-        networkManager.fetchResponse(forEndPoint:  MovieApi.discoverMovies(page: requestModel!), completion: {
+        networkManager.fetchResponse(forEndPoint:  MovieApi.discoverMovies(page: requestModel!), completion: { [weak self]
             (movieApi: MovieApiResponse?, error ) in
+            guard let `self` = self else { return }
             
-            guard error == nil else { //TODO:-
+            guard error == nil else {
+                self.presenter?.showGenericError()
                 return
             }
             
