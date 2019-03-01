@@ -82,8 +82,8 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: DiscoverMovieDelegate {
-    func dataSourceItem() -> [MovieMainDetailsViewModel]? {
-        return movie
+    func dataSourceItem() -> [[MovieMainDetailsViewModel]?]? {
+        return allMovie
     }
     
     func reloadData(withMovie movie: [MovieMainDetailsViewModel]?) {

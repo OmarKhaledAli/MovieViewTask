@@ -10,7 +10,7 @@ import  Foundation
 protocol  DiscoverMovieDelegate {
     //TODO
     func reloadData(withMovie movie: [MovieMainDetailsViewModel]?)
-    func dataSourceItem() -> [MovieMainDetailsViewModel]?
+    func dataSourceItem() -> [[MovieMainDetailsViewModel]?]?
     func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath]
     func reloadRowsData(withMovie newMovie: [MovieMainDetailsViewModel]?, atIndex index: [IndexPath],completion: (()->Void)?)
 }
@@ -93,10 +93,10 @@ extension DiscoverMoviePresenter {
             return nil
         }
         
-        let startIndex = discoverMovieDelegate?.dataSourceItem()?.count ?? 0
-        let endIndex = (discoverMovieDelegate?.dataSourceItem()?.count ?? 0) + newMovie!.count
+        let startIndex = discoverMovieDelegate?.dataSourceItem()?[MovieType.allMovie.rawValue]?.count ?? 0
+        let endIndex = (discoverMovieDelegate?.dataSourceItem()?[MovieType.allMovie.rawValue]?.count ?? 0) + newMovie!.count
         
-        return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+        return (startIndex..<endIndex).map { IndexPath(row: $0, section: MovieType.allMovie.rawValue) }
     }
 
 }

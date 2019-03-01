@@ -63,8 +63,8 @@ class MyMovieDetialsView: UIView, UITextViewDelegate, UINavigationControllerDele
         var myMovie = MovieMainDetailsViewModel()
         myMovie.title = titleTextField.text
         myMovie.date = releaseTextField.text
-        myMovie.overView =  descriptionTextView.text
-        myMovie.posterPath = .data(image: imageView.image ?? (UIImage(named: imagePlaceHolder))! )
+        myMovie.overView =  descriptionTextView.text == textPlaceHolder ? nil : descriptionTextView.text 
+        myMovie.posterPath = .data(image: imageView.image ?? (UIImage(named: imagePlaceHolder))!)
         return myMovie
     }
     

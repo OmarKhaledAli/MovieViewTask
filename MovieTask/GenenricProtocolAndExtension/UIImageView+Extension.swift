@@ -28,6 +28,7 @@ extension UIImageView {
             } else {
                 DispatchQueue.main.async() {
                     self.removeLoadingIndector()
+                     self.image = UIImage(named: "imagePlaceHolder")
                 }
                 return
             }
