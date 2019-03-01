@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyMovieDetialsView" customModule="MovieTask" customModuleProvider="target">
             <connections>
                 <outlet property="descriptionTextView" destination="Q1u-gR-Zmf" id="yDo-jr-SL2"/>
+                <outlet property="imageView" destination="EM5-Bq-lXB" id="yFs-3X-AC9"/>
                 <outlet property="releaseTextField" destination="VaT-7r-1dS" id="oUO-5w-SK8"/>
                 <outlet property="titleTextField" destination="G20-A0-agE" id="NnG-Qn-8ax"/>
             </connections>
@@ -26,9 +27,32 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rY5-tv-CXc">
                             <rect key="frame" x="101" y="5" width="159" height="128"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moviePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="EM5-Bq-lXB">
+                                    <rect key="frame" x="0.0" y="0.0" width="159" height="128"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="GrF-R8-rTk"/>
+                                        <constraint firstAttribute="width" constant="159" id="rkb-r7-2Cp"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSq-4G-bmy">
+                                    <rect key="frame" x="0.0" y="0.0" width="159" height="128"/>
+                                    <connections>
+                                        <action selector="loadImageButtonAction:" destination="-1" eventType="touchUpInside" id="jZx-wr-qQu"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="EM5-Bq-lXB" firstAttribute="top" secondItem="rY5-tv-CXc" secondAttribute="top" id="7vI-wB-hvp"/>
+                                <constraint firstAttribute="trailing" secondItem="EM5-Bq-lXB" secondAttribute="trailing" id="825-6j-hvW"/>
+                                <constraint firstAttribute="bottom" secondItem="kSq-4G-bmy" secondAttribute="bottom" id="CmR-is-kFY"/>
+                                <constraint firstAttribute="bottom" secondItem="EM5-Bq-lXB" secondAttribute="bottom" id="Dse-87-0n1"/>
+                                <constraint firstAttribute="trailing" secondItem="kSq-4G-bmy" secondAttribute="trailing" id="Gyd-OS-KKD"/>
+                                <constraint firstItem="kSq-4G-bmy" firstAttribute="top" secondItem="rY5-tv-CXc" secondAttribute="top" id="LiP-g3-zdq"/>
                                 <constraint firstAttribute="width" constant="159" placeholder="YES" id="hx6-cX-h1m"/>
+                                <constraint firstItem="EM5-Bq-lXB" firstAttribute="leading" secondItem="rY5-tv-CXc" secondAttribute="leading" id="j5r-Y9-qx2"/>
+                                <constraint firstItem="kSq-4G-bmy" firstAttribute="leading" secondItem="rY5-tv-CXc" secondAttribute="leading" id="jcR-1M-xRe"/>
                                 <constraint firstAttribute="height" constant="128" placeholder="YES" id="mDd-Ue-UO4"/>
                             </constraints>
                         </view>
@@ -83,4 +107,7 @@
             <point key="canvasLocation" x="74.400000000000006" y="-94.452773613193415"/>
         </view>
     </objects>
+    <resources>
+        <image name="moviePlaceHolder" width="600" height="850"/>
+    </resources>
 </document>

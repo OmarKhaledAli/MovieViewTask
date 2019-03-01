@@ -43,7 +43,7 @@ class DiscoverMoviePresenter {
                     
                 } else {
                     let loadedIndex = self.calculateIndexPathsToReload(from: newMovie)
-                     let indexPathsToReload = self.discoverMovieDelegate?.visibleIndexPathsToReload(intersecting:loadedIndex ?? [])
+                    let indexPathsToReload = self.discoverMovieDelegate?.visibleIndexPathsToReload(intersecting:loadedIndex ?? [])
                 self.discoverMovieDelegate?.reloadRowsData(withMovie: newMovie, atIndex: indexPathsToReload!,completion:{
                     self.isFetchInProgress = false
                 })
@@ -65,7 +65,7 @@ class DiscoverMoviePresenter {
             var movieViewModel = MovieMainDetailsViewModel()
             movieViewModel.date = movie.releaseDate ?? ""
             movieViewModel.language = movie.language?.uppercased() ?? ""
-            movieViewModel.psoterPath = movie.posterPath
+            movieViewModel.posterPath = movie.posterPath == nil ? nil : .link(path: movie.posterPath!)
             movieViewModel.overView = movie.overview ?? ""
             movieViewModel.title = movie.title ?? ""
             return movieViewModel

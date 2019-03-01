@@ -8,18 +8,23 @@
 
 import UIKit
 
-class MyMovieDetialsView: UIView, UITextViewDelegate, NibOwnerLoadable {
+class MyMovieDetialsView: UIView, UITextViewDelegate, UINavigationControllerDelegate , NibOwnerLoadable, UIImagePickerControllerDelegate  {
 
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var releaseTextField: UITextField!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var releaseTextField: UITextField!
+    @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var imageView: UIImageView!
     
+    private var textPlaceHolder = "Write Your Description here"
+    private let imagePlaceHolder = "imagePlaceHolder"
+    
+    private var imageLoadedClousre: (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         loadNibContent()
         
-        descriptionTextView.text = "Write Your Description here"
+        descriptionTextView.text = textPlaceHolder
         descriptionTextView.delegate = self
         descriptionTextView.textColor = UIColor.lightGray
     }
@@ -33,17 +38,36 @@ class MyMovieDetialsView: UIView, UITextViewDelegate, NibOwnerLoadable {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Placeholder"
+            textView.text = textPlaceHolder
             textView.textColor = UIColor.lightGray
         }
     }
-
-}
-
-public extension UIView {
     
-    class func fromNib<T: UIView>() -> T {
-        return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    @IBAction func loadImageButtonAction(_ sender: Any) {
+        guard imageLoadedClousre != nil else {
+            return
+        }
+        
+        imageLoadedClousre!()
     }
     
+    func setImageLoadedButton(action: (()->())?) {
+        imageLoadedClousre = action
+    }
+    
+    func setImage(image: UIImage) {
+        imageView.image = image
+    }
+    
+    func fetchMyMovie() -> MovieMainDetailsViewModel {
+        var myMovie = MovieMainDetailsViewModel()
+        myMovie.title = titleTextField.text
+        myMovie.date = releaseTextField.text
+        myMovie.overView =  descriptionTextView.text
+        myMovie.posterPath = .data(image: imageView.image ?? (UIImage(named: imagePlaceHolder))! )
+        return myMovie
+    }
+    
+    
+
 }

@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum MovieType: Int {
+    case myMovie
+    case allMovie
+}
+
+
 class ViewController: UIViewController {
     //MARK:- iboutlet
     @IBOutlet weak var movieTableView: UITableView!
@@ -17,6 +23,13 @@ class ViewController: UIViewController {
     //MARK:- properities
     private var presenter: DiscoverMoviePresenter?
     private var movie: [MovieMainDetailsViewModel]?
+    private var myMovie: [MovieMainDetailsViewModel]? {
+        return MyMovieList.shared.myMoives
+    }
+    private var allMovie: [[MovieMainDetailsViewModel]?] {
+        return [myMovie,movie]
+    }
+    
     private var navigator: DiscoverMovieNavigator?
     
     //MARK:- lifeCycle
@@ -29,6 +42,9 @@ class ViewController: UIViewController {
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        movieTableView.reloadData()
+    }
     //MARK:- Configure Presenter
     func setupPresenter() {
         presenter = DiscoverMoviePresenter(delegate: self)
@@ -96,8 +112,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableView
         }
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return allMovie.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  movie == nil ? 0 : 10000
+        switch MovieType(rawValue: section) {
+        case .myMovie?:
+            return  myMovie?.count ?? 0
+        case .allMovie?:
+            return  movie == nil ? 0 : 10000
+        case .none:
+            return 0
+        }
+    
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,7 +134,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableView
         if isLoadingCell(for: indexPath) {
             cell.populateView(movie: nil)
         } else {
-            cell.populateView(movie: movie![indexPath.row])
+            cell.populateView(movie: allMovie[indexPath.section]?[indexPath.row])
         }
         
         return cell
@@ -114,8 +142,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableView
     
     private func isLoadingCell(for indexPath: IndexPath) -> Bool {
         guard  movie != nil else { return true }
-        
-        return indexPath.row >= movie!.count
+        if MovieType(rawValue: indexPath.section) == .allMovie {
+            return indexPath.row >= movie!.count
+        } else {
+            return false
+        }
     }
     
     func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {

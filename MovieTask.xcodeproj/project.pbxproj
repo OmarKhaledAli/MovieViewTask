@@ -15,6 +15,8 @@
 		302CCBAA2227FEFE00CF74F6 /* DiscoverMovieNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302CCBA92227FEFE00CF74F6 /* DiscoverMovieNavigator.swift */; };
 		302CCBAD2229874100CF74F6 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302CCBAC2229874100CF74F6 /* NibOwnerLoadable.swift */; };
 		302CCBAF222989BA00CF74F6 /* Button+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302CCBAE222989BA00CF74F6 /* Button+Extension.swift */; };
+		302CCBB122298FB500CF74F6 /* CreateMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302CCBB022298FB500CF74F6 /* CreateMoviePresenter.swift */; };
+		302CCBB32229A9AF00CF74F6 /* MyMovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302CCBB22229A9AF00CF74F6 /* MyMovieList.swift */; };
 		30466419221CAD3300021064 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30466418221CAD3300021064 /* AppDelegate.swift */; };
 		3046641B221CAD3300021064 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3046641A221CAD3300021064 /* ViewController.swift */; };
 		3046641E221CAD3300021064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3046641C221CAD3300021064 /* Main.storyboard */; };
@@ -71,6 +73,8 @@
 		302CCBA92227FEFE00CF74F6 /* DiscoverMovieNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverMovieNavigator.swift; sourceTree = "<group>"; };
 		302CCBAC2229874100CF74F6 /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibOwnerLoadable.swift; sourceTree = "<group>"; };
 		302CCBAE222989BA00CF74F6 /* Button+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extension.swift"; sourceTree = "<group>"; };
+		302CCBB022298FB500CF74F6 /* CreateMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMoviePresenter.swift; sourceTree = "<group>"; };
+		302CCBB22229A9AF00CF74F6 /* MyMovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMovieList.swift; sourceTree = "<group>"; };
 		30466415221CAD3300021064 /* MovieTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30466418221CAD3300021064 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3046641A221CAD3300021064 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 			children = (
 				30CF4F612220632D00F45903 /* ErrorHandler.swift */,
 				30CF4F672220712400F45903 /* DiscoverMoviePresenter.swift */,
+				302CCBB022298FB500CF74F6 /* CreateMoviePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				30CF4F6A22208FCB00F45903 /* MovieMainDetailsViewModel.swift */,
+				302CCBB22229A9AF00CF74F6 /* MyMovieList.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				302CCBA82227FC7200CF74F6 /* Navigator.swift in Sources */,
 				30CF4F552220304300F45903 /* Movie.swift in Sources */,
 				30CF4F6F22209C8E00F45903 /* MovieMainDetailsTableViewCell.swift in Sources */,
+				302CCBB32229A9AF00CF74F6 /* MyMovieList.swift in Sources */,
 				302CCBAF222989BA00CF74F6 /* Button+Extension.swift in Sources */,
 				30CF4F622220632D00F45903 /* ErrorHandler.swift in Sources */,
 				30CF4F4F221FF95D00F45903 /* NetworkLogger.swift in Sources */,
@@ -472,6 +479,7 @@
 				30CF4F5222202A0900F45903 /* NetworkRouter.swift in Sources */,
 				30143B55222174B300E1F1C3 /* UIImageView+Extension.swift in Sources */,
 				30CF4F4A221FF95D00F45903 /* MovieEndPoint.swift in Sources */,
+				302CCBB122298FB500CF74F6 /* CreateMoviePresenter.swift in Sources */,
 				3046641B221CAD3300021064 /* ViewController.swift in Sources */,
 				30CF4F4D221FF95D00F45903 /* HTTPMethod.swift in Sources */,
 				30466419221CAD3300021064 /* AppDelegate.swift in Sources */,

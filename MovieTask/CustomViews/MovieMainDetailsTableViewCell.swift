@@ -38,7 +38,15 @@ class MovieMainDetailsTableViewCell: UITableViewCell {
         overviewLabel.alpha = 1
         titleLabel.alpha = 1
         yearLabel.alpha = 1
-        posterImageView.downloaded(from: movie.psoterPath)
+        switch movie.posterPath {
+        case let .link(path)?:
+             posterImageView.downloaded(from: path)
+        case let .data(image)?:
+            posterImageView.image = image
+        case .none:
+            posterImageView.image = UIImage(named: placeHolderName)
+        }
+       
     }
     
     func dummyCell() {

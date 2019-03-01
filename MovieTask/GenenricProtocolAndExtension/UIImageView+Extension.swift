@@ -52,21 +52,3 @@ extension UIImageView {
 }
 
 
-extension UITableView {
-    
-
-    
-    func performUpdate(_ update: ()->Void, completion: (()->Void)?) {
-        
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-        
-        // Table View update on row / section
-        beginUpdates()
-        update()
-        endUpdates()
-        
-        CATransaction.commit()
-    }
-}
-
