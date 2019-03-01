@@ -140,6 +140,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableView
         return cell
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard allMovie[section]?.first != nil else {
+            return nil
+        }
+        
+        switch MovieType(rawValue: section) {
+        case .myMovie?:
+            return  "My Movie"
+        case .allMovie?:
+            return  "Movie list"
+        case .none:
+            return nil
+        }
+        
+    }
+    
     private func isLoadingCell(for indexPath: IndexPath) -> Bool {
         guard  movie != nil else { return true }
         if MovieType(rawValue: indexPath.section) == .allMovie {
@@ -148,7 +164,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableView
             return false
         }
     }
-    
+
     func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
         let indexPathsForVisibleRows = movieTableView.indexPathsForVisibleRows ?? []
         let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
