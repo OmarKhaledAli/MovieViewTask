@@ -9,7 +9,6 @@
 struct MovieMainDetailsViewModel {
     var psoterPath: String?
     var title: String?
-    var voteAverage: String?
     var date: String?
     var language: String?
     var overView: String?

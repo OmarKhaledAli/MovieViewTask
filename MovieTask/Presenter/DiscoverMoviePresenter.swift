@@ -66,7 +66,6 @@ class DiscoverMoviePresenter {
             movieViewModel.date = movie.releaseDate ?? ""
             movieViewModel.language = movie.language?.uppercased() ?? ""
             movieViewModel.psoterPath = movie.posterPath
-            movieViewModel.voteAverage = movie.rating == nil ? "\(movie.rating!)" : ""
             movieViewModel.overView = movie.overview ?? ""
             movieViewModel.title = movie.title ?? ""
             return movieViewModel

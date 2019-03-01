@@ -12,14 +12,12 @@ class ViewController: UIViewController {
     //MARK:- iboutlet
     @IBOutlet weak var movieTableView: UITableView!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var addNewMovieButton: UIButton!
     
     //MARK:- properities
     private var presenter: DiscoverMoviePresenter?
-    private var movie: [MovieMainDetailsViewModel]? {
-        didSet {
-            print("")
-        }
-    }
+    private var movie: [MovieMainDetailsViewModel]?
+    private var navigator: DiscoverMovieNavigator?
     
     //MARK:- lifeCycle
     override func viewDidLoad() {
@@ -27,12 +25,21 @@ class ViewController: UIViewController {
         setupPresenter()
         setupTableView()
         fetchMovieData()
-        
+        configureAddNewMovieButton()
+       
     }
     
     //MARK:- Configure Presenter
     func setupPresenter() {
         presenter = DiscoverMoviePresenter(delegate: self)
+        //TODO Forcewrapping
+        navigator = DiscoverMovieNavigator(navigationController: self.navigationController!)
+    }
+    
+    func configureAddNewMovieButton() {
+        addNewMovieButton.setTitleColor(.red, for: .normal)
+        addNewMovieButton.setTitle("Add new Movie", for: .normal)
+        addNewMovieButton.setBackground(color: .black, for: .normal)
     }
     
     func fetchMovieData() {
@@ -53,7 +60,9 @@ class ViewController: UIViewController {
         movieTableView.decelerationRate = UIScrollView.DecelerationRate.normal;
     }
 
-
+    @IBAction func addNewMovieButtonAction(_ sender: Any) {
+        navigator?.navigate(to: .createNewMovie)
+    }
 }
 
 extension ViewController: DiscoverMovieDelegate {
@@ -114,7 +123,4 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableView
         let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
         return Array(indexPathsIntersection)
     }
-    
-   
-
 }

@@ -9,11 +9,13 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class CreateMovieViewController: UIViewController {
    
+    @IBOutlet weak var createMovieView: MyMovieDetialsView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+       
     }
     
 }
