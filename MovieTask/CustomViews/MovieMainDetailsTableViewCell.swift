@@ -50,9 +50,6 @@ class MovieMainDetailsTableViewCell: UITableViewCell {
     }
     
     func dummyCell() {
-        overviewLabel.text = "Omar"
-        titleLabel.text = "Omar"
-        yearLabel.text = "Omar"
         overviewLabel.alpha = 0
         titleLabel.alpha = 0
         yearLabel.alpha = 0

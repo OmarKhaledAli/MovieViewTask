@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIImageView {
+
     func downloaded(from url: String?, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard url != nil else { return }
         
@@ -36,6 +37,7 @@ extension UIImageView {
        
     }
     
+    //MARK : - LoadingIndector
     func addLoadingIndector() {
         let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicator.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)

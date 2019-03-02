@@ -23,7 +23,7 @@
 		3046641E221CAD3300021064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3046641C221CAD3300021064 /* Main.storyboard */; };
 		30466420221CAD3500021064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3046641F221CAD3500021064 /* Assets.xcassets */; };
 		30466423221CAD3500021064 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30466421221CAD3500021064 /* LaunchScreen.storyboard */; };
-		3046642E221CAD3600021064 /* MovieTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3046642D221CAD3600021064 /* MovieTaskTests.swift */; };
+		3046642E221CAD3600021064 /* ImageLoadedTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3046642D221CAD3600021064 /* ImageLoadedTaskTests.swift */; };
 		30466439221CAD3600021064 /* MovieTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30466438221CAD3600021064 /* MovieTaskUITests.swift */; };
 		30CF4F46221FF95D00F45903 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF4F38221FF95D00F45903 /* ParameterEncoding.swift */; };
 		30CF4F47221FF95D00F45903 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF4F39221FF95D00F45903 /* URLParameterEncoding.swift */; };
@@ -85,7 +85,7 @@
 		30466422221CAD3500021064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30466424221CAD3600021064 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30466429221CAD3600021064 /* MovieTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3046642D221CAD3600021064 /* MovieTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTaskTests.swift; sourceTree = "<group>"; };
+		3046642D221CAD3600021064 /* ImageLoadedTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadedTaskTests.swift; sourceTree = "<group>"; };
 		3046642F221CAD3600021064 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30466434221CAD3600021064 /* MovieTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30466438221CAD3600021064 /* MovieTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTaskUITests.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		3046642C221CAD3600021064 /* MovieTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				3046642D221CAD3600021064 /* MovieTaskTests.swift */,
+				3046642D221CAD3600021064 /* ImageLoadedTaskTests.swift */,
 				3046642F221CAD3600021064 /* Info.plist */,
 			);
 			path = MovieTaskTests;
@@ -497,7 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3046642E221CAD3600021064 /* MovieTaskTests.swift in Sources */,
+				3046642E221CAD3600021064 /* ImageLoadedTaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
