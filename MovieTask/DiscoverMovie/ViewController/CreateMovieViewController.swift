@@ -14,14 +14,20 @@ class CreateMovieViewController: UIViewController {
     @IBOutlet weak var createMovieView: MyMovieDetialsView!
     
     private var imagePicker = UIImagePickerController()
+    private var presenter: CreateMoviePresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         uploadImageFromPickerView()
         setupNavigationItem()
+        setupPresenter()
         view.accessibilityIdentifier = "AddMovieView"
        
+    }
+    
+    private func setupPresenter() {
+        presenter = CreateMoviePresenter(delegate: self)
     }
     
     private func uploadImageFromPickerView() {
@@ -46,10 +52,7 @@ class CreateMovieViewController: UIViewController {
     }
     
     @objc func addNewMovieDetails() {
-        if let movie = createMovieView.fetchMyMovie() {
-            //TODO :- in presenter
-            MyMovieList.shared.myMoives.append(movie)
-        }
+        presenter?.addMovie(newMovie:  createMovieView.fetchMyMovie())
     }
     
     
@@ -63,6 +66,13 @@ extension CreateMovieViewController: UINavigationControllerDelegate , UIImagePic
         }
         
         imagePicker.dismiss(animated: true, completion: nil);
+    }
+}
+
+
+extension CreateMovieViewController: CreateMoviePresenterDelegate {
+    func loadMovieDataSuccess() {
+        navigationController?.popToRootViewController(animated: false)
     }
 }
 

@@ -8,11 +8,24 @@
 
 import Foundation
 protocol  CreateMoviePresenterDelegate {
-    
+    func loadMovieDataSuccess()
     
 }
 
 
 class CreateMoviePresenter {
-
+    private var discoverMovieDelegate: CreateMoviePresenterDelegate?
+    
+    
+    init(delegate: CreateMoviePresenterDelegate) {
+        discoverMovieDelegate = delegate
+    }
+    
+    func addMovie(newMovie: MovieMainDetailsViewModel?) {
+        if let movie = newMovie{
+            MyMovieList.shared.myMoives.append(movie)
+            discoverMovieDelegate?.loadMovieDataSuccess()
+        }
+    }
+    
 }
