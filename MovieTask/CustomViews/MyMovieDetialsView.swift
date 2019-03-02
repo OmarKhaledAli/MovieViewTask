@@ -16,7 +16,7 @@ class MyMovieDetialsView: UIView, UITextViewDelegate, UINavigationControllerDele
     @IBOutlet private weak var imageView: UIImageView!
     
     private var textPlaceHolder = "Write Your Description here"
-    private let imagePlaceHolder = "imagePlaceHolder"
+    private let imagePlaceHolder = Asset.imagePlaceHolder.rawValue
     
     private var imageLoadedClousre: (()->())?
     

@@ -43,7 +43,8 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        movieTableView.reloadData()
+        //TODO: let viewcontroller notify the other viewcontroller
+         movieTableView.reloadData()
     }
     //MARK:- Configure Presenter
     func setupPresenter() {

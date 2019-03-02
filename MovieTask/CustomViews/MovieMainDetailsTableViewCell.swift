@@ -16,7 +16,7 @@ class MovieMainDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
-    private let placeHolderName: String = "moviePlaceHolder"
+    private let placeHolderName: String = Asset.imagePlaceHolder.rawValue
     
     override func awakeFromNib() {
         super.awakeFromNib()
