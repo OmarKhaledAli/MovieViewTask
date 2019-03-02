@@ -24,6 +24,21 @@ class MyMovieDetialsView: UIView, UITextViewDelegate, UINavigationControllerDele
         super.awakeFromNib()
         loadNibContent()
         
+        setupView() 
+    }
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+        loadNibContent()
+        
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func setupView() {
         descriptionTextView.text = textPlaceHolder
         descriptionTextView.delegate = self
         descriptionTextView.textColor = UIColor.lightGray
@@ -59,11 +74,15 @@ class MyMovieDetialsView: UIView, UITextViewDelegate, UINavigationControllerDele
         imageView.image = image
     }
     
-    func fetchMyMovie() -> MovieMainDetailsViewModel {
+    func fetchMyMovie() -> MovieMainDetailsViewModel? {
         var myMovie = MovieMainDetailsViewModel()
-        myMovie.title = titleTextField.text
-        myMovie.date = releaseTextField.text
-        myMovie.overView =  descriptionTextView.text == textPlaceHolder ? nil : descriptionTextView.text 
+        myMovie.title = titleTextField.text == "" ? nil : titleTextField.text
+        myMovie.date = releaseTextField.text == "" ? nil : releaseTextField.text
+        myMovie.overView =  descriptionTextView.text == textPlaceHolder ? nil : descriptionTextView.text
+        guard myMovie.title != nil || myMovie.date != nil || myMovie.overView != nil else {
+            return nil
+        }
+        
         myMovie.posterPath = .data(image: imageView.image ?? (UIImage(named: imagePlaceHolder))!)
         return myMovie
     }

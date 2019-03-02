@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  NetworkLayer
+//  MovieTask
 //
 //  Created by Omar Khaled Ali on 2/19/19.
 //  Copyright © 2019 Omar Khaled Ali. All rights reserved.
@@ -45,10 +45,10 @@ class CreateMovieViewController: UIViewController {
     }
     
     @objc func addNewMovieDetails() {
-        let movie = createMovieView.fetchMyMovie()
-        //TODO :- in presenter
-        MyMovieList.shared.myMoives.append(movie)
-        //D self.presenter?.configureMovieDetailsData(title: movie.0, releaseDate: movie.2, overview: movie.1)
+        if let movie = createMovieView.fetchMyMovie() {
+            //TODO :- in presenter
+            MyMovieList.shared.myMoives.append(movie)
+        }
     }
     
     

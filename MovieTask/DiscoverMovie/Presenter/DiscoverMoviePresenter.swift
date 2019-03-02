@@ -13,6 +13,7 @@ protocol  DiscoverMovieDelegate {
     func dataSourceItem() -> [[MovieMainDetailsViewModel]?]?
     func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath]
     func reloadRowsData(withMovie newMovie: [MovieMainDetailsViewModel]?, atIndex index: [IndexPath],completion: (()->Void)?)
+    func presentErrorViewController()
 }
 
 class DiscoverMoviePresenter {
@@ -73,21 +74,17 @@ class DiscoverMoviePresenter {
         
         return moviesViewModel
     }
-    
-    deinit {
-        print("Class removed")
-    }
+
 }
 
 extension DiscoverMoviePresenter: ErrorHandler {
     func showGenericError() {
         self.isFetchInProgress = true
+        discoverMovieDelegate?.presentErrorViewController()
     }
 }
 
-
 extension DiscoverMoviePresenter {
-    //TODO :- How i will iuse these method
     private func calculateIndexPathsToReload(from newMovie: [MovieMainDetailsViewModel]?) -> [IndexPath]? {
         guard newMovie != nil else {
             return nil

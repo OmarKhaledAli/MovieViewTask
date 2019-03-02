@@ -7,12 +7,13 @@
 //
 import  UIKit
 
-enum PosterType {
-    case link(path: String)
-    case data(image: UIImage)
-}
 
 struct MovieMainDetailsViewModel {
+    enum PosterType {
+        case link(path: String)
+        case data(image: UIImage)
+    }
+
     var posterPath: PosterType?
     var title: String?
     var date: String?

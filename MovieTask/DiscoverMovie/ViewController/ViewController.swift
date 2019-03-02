@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     private var allMovie: [[MovieMainDetailsViewModel]?] {
         return [myMovie,movie]
     }
-    
     private var navigator: DiscoverMovieNavigator?
     
     //MARK:- lifeCycle
@@ -43,20 +42,14 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //TODO: let viewcontroller notify the other viewcontroller
+        //TODO: future work: let viewcontroller notify the other viewcontroller and scroll to up
          movieTableView.reloadData()
     }
+    
     //MARK:- Configure Presenter
     func setupPresenter() {
         presenter = DiscoverMoviePresenter(delegate: self)
-        //TODO Forcewrapping
         navigator = DiscoverMovieNavigator(navigationController: self.navigationController!)
-    }
-    
-    func configureAddNewMovieButton() {
-        addNewMovieButton.setTitleColor(.red, for: .normal)
-        addNewMovieButton.setTitle("Add new Movie", for: .normal)
-        addNewMovieButton.setBackground(color: .black, for: .normal)
     }
     
     func fetchMovieData() {
@@ -76,12 +69,19 @@ class ViewController: UIViewController {
         
         movieTableView.decelerationRate = UIScrollView.DecelerationRate.normal;
     }
+    
+    func configureAddNewMovieButton() {
+        addNewMovieButton.setTitleColor(.red, for: .normal)
+        addNewMovieButton.setTitle("Add new Movie", for: .normal)
+        addNewMovieButton.setBackground(color: .black, for: .normal)
+    }
 
     @IBAction func addNewMovieButtonAction(_ sender: Any) {
         navigator?.navigate(to: .createNewMovie)
     }
 }
 
+//MARK :- Presenter Delegate
 extension ViewController: DiscoverMovieDelegate {
     func dataSourceItem() -> [[MovieMainDetailsViewModel]?]? {
         return allMovie
@@ -103,8 +103,14 @@ extension ViewController: DiscoverMovieDelegate {
         
     }
     
+    func presentErrorViewController() {
+        let errorView = ErrorViewController(nibName: "ErrorViewController", bundle: nil)
+        self.present(errorView, animated: true, completion: nil)
+    }
+    
 }
 
+//MARK :- TableView-delagate
 extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -157,6 +163,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,UITableView
         
     }
     
+    //MARK:- Calc Cell
     private func isLoadingCell(for indexPath: IndexPath) -> Bool {
         guard  movie != nil else { return true }
         if MovieType(rawValue: indexPath.section) == .allMovie {
