@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         setupTableView()
         fetchMovieData()
         configureAddNewMovieButton()
+        view.accessibilityIdentifier = "DiscoverMovie"
        
     }
     
@@ -73,6 +74,7 @@ class ViewController: UIViewController {
     func configureAddNewMovieButton() {
         addNewMovieButton.setTitleColor(.red, for: .normal)
         addNewMovieButton.setTitle("Add new Movie", for: .normal)
+        addNewMovieButton.accessibilityIdentifier = "addNewMovie"
         addNewMovieButton.setBackground(color: .black, for: .normal)
     }
 

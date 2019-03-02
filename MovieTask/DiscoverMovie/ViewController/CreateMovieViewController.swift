@@ -20,6 +20,7 @@ class CreateMovieViewController: UIViewController {
         
         uploadImageFromPickerView()
         setupNavigationItem()
+        view.accessibilityIdentifier = "AddMovieView"
        
     }
     

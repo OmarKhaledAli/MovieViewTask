@@ -17,15 +17,12 @@ enum NetworkEnvironment {
 }
 
 public enum MovieApi {
-    case recommended(id:Int)
-    case popular(page:Int)
-    case newMovies(page:Int)
-    case video(id:Int)
     case discoverMovies(page:Int)
 }
 
 extension MovieApi: EndPointType {
     
+    //TODO do it throw schema
     var environmentBaseURL : String {
         switch NetworkManager.environment {
         case .production: return "https://api.themoviedb.org/3/"
@@ -41,14 +38,6 @@ extension MovieApi: EndPointType {
     
     var path: String {
         switch self {
-        case .recommended(let id):
-            return "\(id)/recommendations"
-        case .popular:
-            return "popular"
-        case .newMovies:
-            return "now_playing"
-        case .video(let id):
-            return "\(id)/videos"
         case .discoverMovies:
             return "discover/movie"
         }
@@ -60,18 +49,11 @@ extension MovieApi: EndPointType {
     
     var task: HTTPTask {
         switch self {
-        case .newMovies(let page):
-            return .requestParameters(bodyParameters: nil,
-                                      bodyEncoding: .urlEncoding,
-                                      urlParameters: ["page":page,
-                                                      "api_key":NetworkManager.MovieAPIKey])
         case .discoverMovies(let page):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: ["page":page,
                                                       "api_key":NetworkManager.MovieAPIKey])
-        default:
-            return .request
         }
     }
     
