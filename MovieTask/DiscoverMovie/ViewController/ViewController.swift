@@ -72,10 +72,10 @@ class ViewController: UIViewController {
     }
     
     func configureAddNewMovieButton() {
-        addNewMovieButton.setTitleColor(.red, for: .normal)
+        addNewMovieButton.setTitleColor(.blue, for: .normal)
         addNewMovieButton.setTitle("Add new Movie", for: .normal)
         addNewMovieButton.accessibilityIdentifier = "addNewMovie"
-        addNewMovieButton.setBackground(color: .black, for: .normal)
+        addNewMovieButton.setBackground(color: .white, for: .normal)
     }
 
     @IBAction func addNewMovieButtonAction(_ sender: Any) {
